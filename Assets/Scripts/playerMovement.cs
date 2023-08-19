@@ -13,12 +13,16 @@ public class playerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] float jumpVelocity = 7.5f;
     [SerializeField] private float climbSpeed = 5f;
+    [SerializeField] private Vector2 deathKick = new Vector2(10f, 10f);
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform gun;
     private CapsuleCollider2D myBodyCollider;
     private BoxCollider2D myFeetCollider;
     private float defaultGravity;
     private bool isAlive = true;
-    //private EnemyMoveMents enemy; 
-
+    private EnemyMoveMents enemy; 
+    
+    
     void Start()
     {
         myAnimator = GetComponent<Animator>();
@@ -31,22 +35,16 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        while (isAlive)
-        {
-            Run();
-            FlipSprite();
-            ClimbLadder();
-            Die();
-        } 
-        return;
+        if (!isAlive) {return;}
+        Run();
+        FlipSprite();
+        ClimbLadder();
+        Die();
     }
 
     void OnMove(InputValue value)
     {
-        if (!isAlive)
-        {
-            return;
-        }
+        if (!isAlive) {return;}
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
     }
@@ -73,6 +71,7 @@ public class playerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        if (!isAlive) {return;}
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))){return;}
 
         if (value.isPressed)
@@ -85,6 +84,7 @@ public class playerMovement : MonoBehaviour
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             rb2d.gravityScale = defaultGravity;
+            myAnimator.SetBool("isClimbing",false);
             return;
         }
         
@@ -96,16 +96,32 @@ public class playerMovement : MonoBehaviour
         if (playerHasVerticalSpeed)
         {
             myAnimator.SetBool("isClimbing",true);
-        }else
+        }
+        else
+        {
             myAnimator.SetBool("isClimbing",false);
+        }
+        
 
     }
 
     void Die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies")))
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies","Hazards")))
         {
             isAlive = false;
+            myAnimator.SetTrigger("Dying");
+            rb2d.velocity = deathKick;
+            FindObjectOfType<gameSession>().ProcessPlayerDeath();
+        }
+    }
+    
+    void OnFire(InputValue value)
+    {
+        if (!isAlive){return;}
+
+        {
+            Instantiate(bullet, gun.position, transform.rotation);
         }
     }
 }
