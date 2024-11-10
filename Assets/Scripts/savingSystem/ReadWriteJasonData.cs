@@ -47,9 +47,5 @@ public class ReadWriteJasonData : MonoBehaviour
         }
     }
 
-    public void CloseGame()
-    {
-        Application.Quit();
-        Debug.Log("App Closed!");
-    }
+    
 }
