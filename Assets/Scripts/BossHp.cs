@@ -1,27 +1,19 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossHp : MonoBehaviour
 {
     public HealthBar healthBar;
-    private bulletBehavior bullet;
     public int currentHealth;
     public int maxHealth = 200;
-    
+    public Animator animator;
+    public GameObject deathEffect;
+    public float deathDelay = 1.5f;git 
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-    }
-
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     TakeDamage(5);
-        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,9 +25,44 @@ public class BossHp : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("Boss took damage. Current Health: " + currentHealth);
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            //Die();
+        }
     }
+
+    // private void Die()
+    // {
+    //     Debug.Log("Boss has died.");
+    //     
+    //     if (animator != null)
+    //     {
+    //         animator.SetTrigger("Die");
+    //     }
+    //
+    //     if (deathEffect != null)
+    //     {
+    //         Instantiate(deathEffect, transform.position, Quaternion.identity);
+    //     }
+    //
+    //     Collider2D bossCollider = GetComponent<Collider2D>();
+    //     if (bossCollider != null)
+    //     {
+    //         bossCollider.enabled = false;
+    //     }
+    //
+    //     SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+    //     if (spriteRenderer != null)
+    //     {
+    //         spriteRenderer.enabled = false;
+    //     }
+    //
+    //     Destroy(gameObject, deathDelay);
+    // }
 }

@@ -10,6 +10,7 @@ public class bulletBehavior : MonoBehaviour
     private playerMovement _playerMovement;
     private float xSpeed;
     private float bulletRotation;
+    [SerializeField] BossHp bossHp;
     void Start()
     {
         _playerMovement = FindObjectOfType<playerMovement>();
@@ -27,10 +28,17 @@ public class bulletBehavior : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Destroy(other.gameObject);
-        } 
+        }
+        else if (other.tag == "Boss")
+        {
+            bossHp = other.GetComponent<BossHp>();
+            if (bossHp != null)
+            {
+                bossHp.TakeDamage(10);
+            }
+        }
         Destroy(gameObject);
     }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);

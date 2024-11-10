@@ -19256,7 +19256,7 @@ GameObject:
   - component: {fileID: 894096295}
   m_Layer: 10
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19409,8 +19409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1317718046}
-  currentHealth: 500
-  maxHealth: 500
+  currentHealth: 20
+  maxHealth: 20
+  animator: {fileID: 1757741296}
+  deathEffect: {fileID: 0}
+  deathDelay: 1.5
 --- !u!1 &929774951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6722968635691040937, guid: 8b0c25572cc127045a1fa3b5818cb14c, type: 3}
@@ -19442,11 +19445,11 @@ PrefabInstance:
       objectReference: {fileID: 125111822}
     - target: {fileID: 3995945980309322974, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.93
+      value: 29.39
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980309322974, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.64
+      value: 17.04
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980724792898, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_BoundingShape2D
@@ -19454,11 +19457,11 @@ PrefabInstance:
       objectReference: {fileID: 125111822}
     - target: {fileID: 3995945980724792899, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.93
+      value: 29.39
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980724792899, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.64
+      value: 17.04
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980724792925, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_Follow
@@ -19470,11 +19473,11 @@ PrefabInstance:
       objectReference: {fileID: 125111822}
     - target: {fileID: 3995945980982240750, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.93
+      value: 29.39
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980982240750, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.64
+      value: 17.04
       objectReference: {fileID: 0}
     - target: {fileID: 3995945980982240751, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_Follow
@@ -19482,11 +19485,11 @@ PrefabInstance:
       objectReference: {fileID: 281101545}
     - target: {fileID: 3995945981586708301, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.93
+      value: 29.39
       objectReference: {fileID: 0}
     - target: {fileID: 3995945981586708301, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.64
+      value: 17.04
       objectReference: {fileID: 0}
     - target: {fileID: 3995945981768408178, guid: 0738628bda511cb4aa07a5297dd49320, type: 3}
       propertyPath: m_RootOrder
@@ -23706,6 +23709,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1757741294}
     m_Modifications:
+    - target: {fileID: 2240164122649057630, guid: b4474c8869fca474aa84611f23d147c7, type: 3}
+      propertyPath: m_Value
+      value: 0.248
+      objectReference: {fileID: 0}
     - target: {fileID: 3467122173022451785, guid: b4474c8869fca474aa84611f23d147c7, type: 3}
       propertyPath: m_Name
       value: CanvasHP
@@ -24074,6 +24081,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIPath: {fileID: 894096292}
+--- !u!95 &1757741296 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2569530806489000968, guid: 8b0c25572cc127045a1fa3b5818cb14c, type: 3}
+  m_PrefabInstance: {fileID: 1382989858634144696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1822492048 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3657289783424126283, guid: b4474c8869fca474aa84611f23d147c7, type: 3}
@@ -24545,11 +24557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 948278798114706031, guid: 0809bf312b8775541bb7d5b033f5bcf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.93
+      value: 29.39
       objectReference: {fileID: 0}
     - target: {fileID: 948278798114706031, guid: 0809bf312b8775541bb7d5b033f5bcf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.64
+      value: 17.04
       objectReference: {fileID: 0}
     - target: {fileID: 948278798114706031, guid: 0809bf312b8775541bb7d5b033f5bcf6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24619,6 +24631,10 @@ PrefabInstance:
     - target: {fileID: 6722968635691040937, guid: 8b0c25572cc127045a1fa3b5818cb14c, type: 3}
       propertyPath: m_Name
       value: BossGFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722968635691040937, guid: 8b0c25572cc127045a1fa3b5818cb14c, type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8770211911435081739, guid: 8b0c25572cc127045a1fa3b5818cb14c, type: 3}
       propertyPath: m_RootOrder
@@ -24825,6 +24841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7760642331596847863, guid: d89222806ca25b64da76491a3b4043e3, type: 3}
+      propertyPath: bossHp
+      value: 
+      objectReference: {fileID: 894096295}
     - target: {fileID: 5200324404037236250, guid: d89222806ca25b64da76491a3b4043e3, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -24872,6 +24892,10 @@ PrefabInstance:
     - target: {fileID: 8160410411340885589, guid: d89222806ca25b64da76491a3b4043e3, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160410411340885589, guid: d89222806ca25b64da76491a3b4043e3, type: 3}
+      propertyPath: m_TagString
+      value: bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
